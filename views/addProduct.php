@@ -31,8 +31,10 @@
     <hr>
     <!-- Change action -->
     <form action="../database/addToDB.php" method="post" id="product_form">
-        <label for="sku">SKU</label>
-        <input type="text" id="sku" name="sku" required/>
+        <div class="form-group">
+          <label for="sku">SKU</label>
+          <input type="text" id="sku" name="sku" required/>
+        </div>
         <br>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" required/>
