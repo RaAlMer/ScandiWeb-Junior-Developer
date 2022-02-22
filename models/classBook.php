@@ -14,19 +14,33 @@
       $this->weight = $weight;
     }
 
-    //Creates a book record in the table
+    //Creates a book record in the database
     public function setBook($connection, $sku, $name, $price, $weight, $type){
       try {
-        $statement = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `weight`,`type`)
+        $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `weight`,`type`)
         VALUES ('$sku', '$name', $price, $weight, '$type');
         ");
 
-        return $statement;
+        return $sql;
 
       } catch (PDOException $error) {
-        echo "Insert failled: ".$error->getMessage();
+        echo $error->getMessage();
       }
     }
+    
+    //Gets the books records in the database
+    protected function getBook($connection){
+    try {
+      $sql = $connection->query("SELECT * FROM `products` WHERE `sku` = $this->sku AND `type` = 'book'");
+
+      return $sql;
+
+    $this->weight = $value;
+    } catch (PDOException $error) {
+      echo $error->getMessage();
+    }
+  }
+    
   }
 
 
