@@ -18,15 +18,28 @@
       $this->length = $length;
     }
 
-    //Creates a record in table with given values
+    //Creates a furniture record in the database
     function setFurniture($connection, $sku, $name, $price, $height, $width, $length, $type){
       try {
-        $statement = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `height`, `width`, `length`,`type`)  VALUES ('$sku', '$name', $price, $height, $width, $length, '$type');");
+        $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `height`, `width`, `length`,`type`)  VALUES ('$sku', '$name', $price, $height, $width, $length, '$type');");
 
-        return $statement;
+        return $sql;
 
       } catch (PDOException $error) {
-        echo "Insert failled: ".$error->getMessage();
+        echo $error->getMessage();
+      }
+    }
+    
+    //Gets all furniture records in the database
+    protected function getFurniture($connection){
+      try {
+        $sql = $connection->query("SELECT * FROM `products` WHERE `sku` = $this->sku AND `type` = 'furniture';");
+
+        return $sql;
+
+      $this->height = $value;
+      } catch (PDOException $error) {
+        echo $error->getMessage();
       }
     }
   }
