@@ -13,10 +13,10 @@ class Product
   }
 
   //Deletes selected products by their id from the checkbox
-  public function deleteProducts($connect, $id){
+  public function deleteProducts($connection, $id){
     try {
-      $statement = $connect->query("DELETE FROM products WHERE id = $id");
-      return $statement;
+      $sql = $connection->query("DELETE FROM products WHERE id = $id");
+      return $sql;
 
     } catch (PDOException $error) {
       echo $error->getMessage();
@@ -24,11 +24,11 @@ class Product
   }
 
   //Gets all the product that exists in the database
-  function getProducts($connect){
+  function getProducts($connection){
     try {
-      $statement = $connect->query("SELECT * FROM products");
+      $sql = $connection->query("SELECT * FROM products");
 
-      return $statement;
+      return $sql;
 
     } catch (PDOException $error) {
       echo $error->getMessage();
