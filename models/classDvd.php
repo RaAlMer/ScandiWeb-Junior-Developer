@@ -14,19 +14,32 @@
       $this->size = $size;
     }
 
-    //Creates a dvd product in the table
+    //Creates a dvd product in the database
     public function setDVD($connection, $sku, $name, $price, $size, $type){
       try {
-        $statement = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`,`size`, `type`)
+        $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`,`size`, `type`)
         VALUES ('$sku', '$name', $price, $size, '$type');
         ");
 
-        return $statement;
+        return $sql;
 
       } catch (PDOException $error) {
-        echo "Insert failled: ".$error->getMessage();
+        echo $error->getMessage();
       }
     }
+    
+    //Gets all DVD records in the database
+    protected function getDVD($connection){
+      try {
+        $sql = $connection->query("SELECT * FROM `products` WHERE `sku` = $this->sku AND `type` = 'dvd';");
+
+        return $sql;
+
+        $this->size = $value;
+      } catch (PDOException $error) {
+        echo $error->getMessage();
+      }
+   } 
   }
 
 ?>
