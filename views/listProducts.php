@@ -85,10 +85,10 @@
       foreach ($checkBoxes as $checkBox) {
         $Product->deleteProducts($connection, $checkBox);
       }
-      header("refresh:0");
-
+      
     } catch (PDOException $error) {
       echo $error->getMessage();
     }
+    header( 'Location: /');
   }
 ?>
