@@ -21,17 +21,19 @@ USE `products`;
 -- Table's structure for the table `products`
 --
 
-CREATE TABLE `products` (
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL,
-  `sku` varchar(30) DEFAULT NULL,
-  `name` varchar(40) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `height` float DEFAULT NULL,
-  `width` float DEFAULT NULL,
-  `length` float DEFAULT NULL,
-  `weight` float DEFAULT NULL,
-  `size` float DEFAULT NULL,
-  `type` varchar(30) DEFAULT NULL
+  `sku` varchar(30) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `price` float NULL,
+  `height` float NULL,
+  `width` float NULL,
+  `length` float NULL,
+  `weight` float NULL,
+  `size` float NULL,
+  `type` varchar(30) NOT NULL,
+  UNIQUE KEY `sku` (`sku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
