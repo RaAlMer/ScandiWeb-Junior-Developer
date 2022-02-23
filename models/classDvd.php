@@ -34,8 +34,6 @@
         $sql = $connection->query("SELECT * FROM `products` WHERE `sku` = $this->sku AND `type` = 'dvd';");
 
         return $sql;
-
-        $this->size = $value;
       } catch (PDOException $error) {
         echo $error->getMessage();
       }
