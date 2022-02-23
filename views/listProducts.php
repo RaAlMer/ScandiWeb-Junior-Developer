@@ -1,6 +1,6 @@
 <?php
-  require("/xampp/htdocs/models/classProduct.php");
-  require_once('/xampp/htdocs/database/connection.php');
+  require('./models/classProduct.php');
+  require_once('./database/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,10 +81,8 @@
 <?php
   if (isset($_POST['deleteBtn'])) {
     try {
-      $dom = new DOMDocument;
       $checkBoxes = $_POST['checkbox'];
       foreach ($checkBoxes as $checkBox) {
-        echo $checkBox;
         $Product->deleteProducts($connection, $checkBox);
       }
       header("refresh:0");
