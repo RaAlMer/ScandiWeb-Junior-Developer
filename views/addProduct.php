@@ -1,6 +1,6 @@
 <?php
-  require("/xampp/htdocs/models/classProduct.php");
-  require_once('/xampp/htdocs/database/connection.php');
+  require('../models/classProduct.php');
+  require_once('../database/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@
                 <button type="submit" class="btn btn-light" form="product_form" value="save">Save</button>
             </div>
             <div class="col-2">
-                <a href="./listProducts.php" class="btn btn-danger">Cancel</a>
+                <a href="/" class="btn btn-danger">Cancel</a>
             </div>	
         </div>
     </div>
