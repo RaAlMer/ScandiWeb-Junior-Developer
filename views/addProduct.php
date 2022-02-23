@@ -30,56 +30,65 @@
     </div>
     <hr>
     <!-- Change action -->
-    <form action="../database/addToDB.php" method="post" id="product_form">
+    <form action="../database/addToDB.php" method="post" id="product_form" style="margin: 40px">
         <div class="form-group">
-          <label for="sku">SKU</label>
-          <input type="text" id="sku" name="sku" required/>
+          <label for="sku" class="col-1">SKU</label>
+          <input type="text" id="sku" name="sku" class="col-4" required/>
         </div>
         <br>
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required/>
+        <div class="form-group">
+          <label for="name" class="col-1">Name</label>
+          <input type="text" name="name" id="name" class="col-4" required/>
+        </div>
         <br>
-        <label for="price">Price ($)</label>
-        <input type="number" id="price" name="price" step="any" required/>
+        <div class="form-group">
+          <label for="price" class="col-1">Price ($)</label>
+          <input type="number" id="price" name="price" step="any" class="col-4" required/>
+        </div>
         <br>
-        <label for="productType">Type Switcher</label>
-        <select name="productType" id="productType" onchange="switchSpecificAttribute(this)">
-            <option class="dropdown-item text-light" value="0" disabled selected>Choose type</option>
-            <option value="dvd">DVD</option>
-            <option value="book">Book</option>
-            <option value="furniture">Furniture</option>
-        </select>
+        <div class="form-group">
+          <label for="productType">Type Switcher</label>
+          <select name="productType" id="productType" onchange="switchSpecificAttribute(this)">
+              <option class="dropdown-item text-light" value="0" disabled selected>Choose type</option>
+              <option value="dvd">DVD</option>
+              <option value="book">Book</option>
+              <option value="furniture">Furniture</option>
+          </select>
+        </div>
         
-        <div class="specificAttribute">
+        <div class="specificAttribute form-group">
           <!-- Product type-specific attribute -->
           <div id="DVD">
             <div class="mb-3 mt-3">
-              <label for="size" >Size (MB)</label>
-              <input type="number" id="size" name="size" step="any" >
-              <p><b>Please, provide disk space size in MB.</b></p>
+              <label for="size" class="col-1">Size (MB)</label>
+              <input type="number" id="size" name="size" step="any" class="col-4">
             </div>
+            <br>
+            <p><b>Please, provide disk space size in MB.</b></p>
           </div>
           <div id="Furniture">
             <div class="mb-3 mt-3">
-              <label for="height">Height (CM)</label>
-              <input type="number" id="height" name="height" step="any" >
+              <label for="height" class="col-1">Height (CM)</label>
+              <input type="number" id="height" name="height" step="any" class="col-4">
             </div>
             <div class="mb-3 mt-3">
-              <label for="width">Width (CM)</label>
-              <input type="number" id="width" name="width" step="any" >
+              <label for="width" class="col-1">Width (CM)</label>
+              <input type="number" id="width" name="width" step="any" class="col-4">
             </div>
             <div class="mb-3 mt-3">
-              <label for="length">Length (CM)</label>
-              <input type="number" id="length" name="length" step="any" >
+              <label for="length" class="col-1">Length (CM)</label>
+              <input type="number" id="length" name="length" step="any" class="col-4">
             </div>
+            <br>
             <p><b>Please, provide furniture dimensions in CM.</b></p>
           </div>
           <div id="Book">
             <div class="mb-3 mt-3">
-              <label for="weight">Weight (KG)</label>
-              <input type="number" id="weight" name="weight" step="any" >
-              <p><b>Please, provide book weight in KG.</b></p>
+              <label for="weight" class="col-1">Weight (KG)</label>
+              <input type="number" id="weight" name="weight" step="any" class="col-4">
             </div>
+            <br>
+            <p><b>Please, provide book weight in KG.</b></p>
           </div>
         </div>
     </form>
