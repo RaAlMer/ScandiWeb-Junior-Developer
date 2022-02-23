@@ -1,12 +1,12 @@
 <?php
-    require("/xampp/htdocs/models/classProduct.php");
-    require("/xampp/htdocs/models/classBook.php");
-    require("/xampp/htdocs/models/classDvd.php");
-    require("/xampp/htdocs/models/classFurniture.php");
-    require_once('/xampp/htdocs/database/connection.php');
+    require("../models/classProduct.php");
+    require("../models/classBook.php");
+    require("../models/classDvd.php");
+    require("../models/classFurniture.php");
+    require_once('../database/connection.php');
 
     try {
-      //assign input value's to variables
+      //Variables with POST[input]
       $sku = $_POST['sku'];
       $name = $_POST['name'];
       $price = $_POST['price'];
@@ -33,7 +33,7 @@
         $dvd->setDVD($connection,$sku,$name,$price,$size,$type);
         break;
       }
-      //var_dump($book);
+
       header("refresh:0;url=/");
 
     } catch (PDOException $error) {
