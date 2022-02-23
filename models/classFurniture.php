@@ -37,7 +37,6 @@
 
         return $sql;
 
-      $this->height = $value;
       } catch (PDOException $error) {
         echo $error->getMessage();
       }
