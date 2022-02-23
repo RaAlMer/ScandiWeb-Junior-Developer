@@ -35,7 +35,6 @@
 
       return $sql;
 
-    $this->weight = $value;
     } catch (PDOException $error) {
       echo $error->getMessage();
     }
