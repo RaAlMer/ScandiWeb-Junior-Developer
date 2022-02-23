@@ -1,6 +1,3 @@
-<?php
-  require_once('/xampp/htdocs/database/connection.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -21,4 +18,3 @@
     </div>
   </body>
 </html>
-<!-- <script src="../JS/CreateAllerts.js" charset="utf-8"></script> -->
