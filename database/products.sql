@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL,
   `sku` varchar(30) NOT NULL,
-  `name` varchar(40) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `price` float NULL,
   `height` float NULL,
   `width` float NULL,
