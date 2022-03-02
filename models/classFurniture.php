@@ -1,5 +1,4 @@
 <?php
-
   class Furniture extends Product
   {
     /** Attributes **/
@@ -8,18 +7,20 @@
     protected $length;
 
     /** Methods **/
-    function __construct($sku,$name,$price,$height,$width,$length)
+    function __construct($sku, $name, $price, $size, $weight, $height, $width, $length)
     {
       $this->sku = $sku;
       $this->name = $name;
       $this->price = $price;
+      $this->size = $size;
+      $this->weight = $weight;
       $this->height = $height;
       $this->width = $width;
       $this->length = $length;
     }
 
     //Creates a furniture record in the database
-    function setFurniture($connection, $sku, $name, $price, $height, $width, $length, $type){
+    function validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type) {
       try {
         $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `height`, `width`, `length`,`type`)  VALUES ('$sku', '$name', $price, $height, $width, $length, '$type');");
 
@@ -42,5 +43,4 @@
       }
     }
   }
-
 ?>
