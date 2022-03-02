@@ -1,21 +1,24 @@
 <?php
-
   class DVD extends Product
   {
     /** Attributes **/
     protected $size;
 
     /** Methods **/
-    function __construct($sku, $name, $price, $size)
+    function __construct($sku, $name, $price, $size, $weight, $height, $width, $length)
     {
       $this->sku = $sku;
       $this->name = $name;
       $this->price = $price;
       $this->size = $size;
+      $this->weight = $weight;
+      $this->height = $height;
+      $this->width = $width;
+      $this->length = $length;
     }
 
     //Creates a dvd product in the database
-    public function setDVD($connection, $sku, $name, $price, $size, $type){
+    function validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type) {
       try {
         $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`,`size`, `type`)
         VALUES ('$sku', '$name', $price, $size, '$type');
@@ -34,10 +37,10 @@
         $sql = $connection->query("SELECT * FROM `products` WHERE `sku` = $this->sku AND `type` = 'dvd';");
 
         return $sql;
+
       } catch (PDOException $error) {
         echo $error->getMessage();
       }
    } 
   }
-
 ?>
