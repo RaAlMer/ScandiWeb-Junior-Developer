@@ -4,36 +4,53 @@
     require("../models/classDvd.php");
     require("../models/classFurniture.php");
     require_once('../database/connection.php');
-
-    try {
-      //assign input value's to variables
-      $sku = $_POST['sku'];
-      $name = $_POST['name'];
-      $price = $_POST['price'];
-      $type = $_POST['productType'];
-      //Book variable
-      $weight = $_POST['weight'];
-      //DVD variable
-      $size = $_POST['size'];
-      //Furniture variables
-      $height = $_POST['height'];
-      $width = $_POST['width'];
-      $length = $_POST['length'];
-      
-      $validators = [
-        'dvd' => 'DVD',
-        'book' => 'Book',
-        'furniture' => 'Furniture',
-      ];
-
-      $validatorClass = $validators[$type];
-      $validator = new $validatorClass($sku, $name, $price, $size, $weight, $height, $width, $length);
-      $validator->validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type);
-
-
-      header("refresh:0;url=/");
-
-    } catch (PDOException $error) {
-      echo $error->getMessage();
+    
+    class AddToDB {
+        /** Attributes **/
+        protected $sku;
+        protected $name;
+        protected $price;
+        protected $type;
+        protected $weight;
+        protected $size;
+        protected $height;
+        protected $width;
+        protected $length;
+        
+        function __construct($sku, $name, $price, $size, $weight, $height, $width, $length, $type)
+        {
+          $this->sku = $sku;
+          $this->name = $name;
+          $this->price = $price;
+          $this->size = $size;
+          $this->weight = $weight;
+          $this->height = $height;
+          $this->width = $width;
+          $this->length = $length;
+          $this->type = $type;
+        }
+        //Add to DB
+        function addDB($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type) {
+          try {
+              $validators = [
+                'dvd' => 'DVD',
+                'book' => 'Book',
+                'furniture' => 'Furniture',
+              ];
+        
+              $validatorClass = $validators[$type];
+              $validator = new $validatorClass($sku, $name, $price, $size, $weight, $height, $width, $length);
+              return $validator->validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type);
+    
+          } catch (PDOException $error) {
+            echo $error->getMessage();
+          }
+        }
+        
     }
+    $adding = new AddToDB($_POST['sku'], $_POST['name'], $_POST['price'], $_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length'], $_POST['productType']);
+    $adding->addDB($connection, $_POST['sku'], $_POST['name'], $_POST['price'], $_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length'], $_POST['productType']);
+    
+    header("refresh:0;url=/");
+
 ?>
