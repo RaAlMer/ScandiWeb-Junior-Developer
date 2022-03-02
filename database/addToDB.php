@@ -11,11 +11,11 @@
       $name = $_POST['name'];
       $price = $_POST['price'];
       $type = $_POST['productType'];
-      
+      //Book variable
       $weight = $_POST['weight'];
-      
+      //DVD variable
       $size = $_POST['size'];
-      
+      //Furniture variables
       $height = $_POST['height'];
       $width = $_POST['width'];
       $length = $_POST['length'];
