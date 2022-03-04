@@ -11,6 +11,18 @@ class Product
   function __construct(){
     //Creates empty product
   }
+  
+  //Creates a record in the database
+    function validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type) {
+      try {
+        $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`, `size`, `weight`, `height`, `width`, `length`,`type`)  VALUES ('$sku', '$name', $price, $size, $weigth, $height, $width, $length, '$type');");
+
+        return $sql;
+
+      } catch (PDOException $error) {
+        echo $error->getMessage();
+      }
+    }
 
   //Deletes selected products by their id from the checkbox
   public function deleteProducts($connection, $id){
