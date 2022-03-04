@@ -16,20 +16,6 @@
       $this->width = $width;
       $this->length = $length;
     }
-
-    //Creates a dvd product in the database
-    function validate($connection, $sku, $name, $price, $size, $weight, $height, $width, $length, $type) {
-      try {
-        $sql = $connection->query("INSERT INTO `products` (`sku`, `name`, `price`,`size`, `type`)
-        VALUES ('$sku', '$name', $price, $size, '$type');
-        ");
-
-        return $sql;
-
-      } catch (PDOException $error) {
-        echo $error->getMessage();
-      }
-    }
     
     //Gets all DVD records in the database
     protected function getDVD($connection){
